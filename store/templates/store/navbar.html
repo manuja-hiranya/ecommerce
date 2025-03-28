@@ -1,74 +1,203 @@
 <!-- navbar.html -->
 <nav class="navbar">
+    <div class="logo">Mandodari Ceylon</div>
+    <div class="nav-links">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'shop' %}">Shop</a>
+        <div class="dropdown">
+            <a href="#">Categories ▾</a>
+            <div class="dropdown-content">
+                <a href="{% url 'beauty' %}">Natural Beauty Products</a>
+                <a href="{% url 'spices' %}">Natural Spices</a>
+                <a href="{% url 'fashion' %}">Fashion</a>
+            </div>
+        </div>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'about' %}">About Us</a>
+    </div>
+    <div class="icons">
+        <a href="#"><i class="fas fa-search"></i></a>
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+        <a href="#"><i class="fas fa-user"></i></a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu">
     <a href="{% url 'home' %}">Home</a>
     <a href="{% url 'shop' %}">Shop</a>
-    <div class="dropdown">
-        <a href="#">Categories</a>
-        <div class="dropdown-content">
-            <a href="{% url 'beauty' %}">Natural Beauty Products</a>
-            <a href="{% url 'spices' %}">Natural Spices</a>
-            <a href="{% url 'fashion' %}">Fashion</a>
-        </div>
-    </div>
+    <a href="{% url 'beauty' %}">Natural Beauty Products</a>
+    <a href="{% url 'spices' %}">Natural Spices</a>
+    <a href="{% url 'fashion' %}">Fashion</a>
     <a href="{% url 'contact' %}">Contact</a>
     <a href="{% url 'about' %}">About Us</a>
-</nav>
+</div>
+
 <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            background-color: #f4f4f4;
-        }
-        .navbar {
-            background-color: #333;
-            padding: 15px;
-            text-align: center;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-        }
-        .dropdown {
-            display: inline-block;
-            position: relative;
-        }
-        .dropdown-content {
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Garamond, Serif;
+    }
+
+    body {
+        background-color: #f4f4f4;
+        padding-top: 70px; /* To prevent content from going under fixed navbar */
+    }
+
+    /* Fixed Navbar */
+    .navbar {
+        background-color: #ffffff;
+        padding: 20px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        font-size: 22px;
+        font-weight: bold;
+        color: #000000;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 30px;
+    }
+
+    .nav-links a {
+        color: #000000;
+        text-decoration: none;
+        padding: 10px 15px;
+        font-size: 18px;
+        transition: 0.3s;
+        position: relative;
+    }
+
+    .nav-links a:hover {
+        color: #3b98ea;
+    }
+
+    .dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        min-width: 220px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .dropdown:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .dropdown-content a {
+        display: block;
+        padding: 12px 15px;
+        color: #333;
+        text-decoration: none;
+        font-size: 16px;
+        transition: 0.3s;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+        background: #a1d1ff;
+        color: #000000;
+    }
+
+    .icons {
+        display: flex;
+        gap: 20px;
+    }
+
+    .icons a {
+        color: #000000;
+        font-size: 20px;
+        transition: 0.3s;
+    }
+
+    .icons a:hover {
+        color: #3b98ea;
+    }
+
+    /* Mobile Menu */
+    .hamburger {
+        display: none;
+        font-size: 26px;
+        cursor: pointer;
+    }
+
+    .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        padding: 10px 0;
+        z-index: 999;
+    }
+
+    .mobile-menu a {
+        display: block;
+        padding: 12px;
+        font-size: 18px;
+        text-decoration: none;
+        color: #000;
+    }
+
+    .mobile-menu a:hover {
+        background: #3b98ea;
+        color: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+        .nav-links {
             display: none;
-            position: absolute;
-            background-color: #fff;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-            z-index: 1;
         }
-        .dropdown-content a {
-            color: black;
-            padding: 10px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
+        .icons {
+            display: none;
         }
-        .dropdown:hover .dropdown-content {
+        .hamburger {
             display: block;
         }
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 80vh;
-            background: url('https://source.unsplash.com/1600x900/?ecommerce') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 50px;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-        }
-    </style>
+    }
+
+</style>
+
+<script>
+    function toggleMenu() {
+        var menu = document.querySelector('.mobile-menu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+</script>

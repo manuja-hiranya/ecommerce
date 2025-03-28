@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discounted Products</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link your CSS file if needed -->
+
+    {% load static %}
+</head>
+<body>
+
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5" style="margin: 30px;">
+            <span class="px-2">Discounted Products</span>
+        </h2>
+    </div>
+
+    <div class="banner-container">
+        <a href="product_detail.html?id=1" class="banner">
+            <img class="banner-bg" src="static/banner-1.jpg" alt="Banner Image">
+            <div class="banner-content">
+                <h3>Product Name 1</h3>
+                <span class="discount-label">20% OFF</span>
+                <button class="shop-now">Shop Now</button>
+            </div>
+        </a>
+
+        <a href="product_detail.html?id=2" class="banner">
+            <img class="banner-bg" src="static/banner-2.jpg" alt="Banner Image">
+            <div class="banner-content">
+                <h3>Product Name 2</h3>
+                <span class="discount-label">15% OFF</span>
+                <button class="shop-now">Shop Now</button>
+            </div>
+        </a>
+
+        <a href="product_detail.html?id=3" class="banner">
+            <img class="banner-bg" src="static/banner-3.jpg" alt="Banner Image">
+            <div class="banner-content">
+                <h3>Product Name 3</h3>
+                <span class="discount-label">10% OFF</span>
+                <button class="shop-now">Shop Now</button>
+            </div>
+        </a>
+
+        <a href="product_detail.html?id=4" class="banner">
+            <img class="banner-bg" src="static/banner-4.jpg" alt="Banner Image">
+            <div class="banner-content">
+                <h3>Product Name 4</h3>
+                <span class="discount-label">25% OFF</span>
+                <button class="shop-now">Shop Now</button>
+            </div>
+        </a>
+    </div>
+
+    <style>
+        .discounted-products-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .banner-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .banner {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            text-decoration: none; 
+            color: inherit; 
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .banner:hover {
+            transform: scale(1.02);
+        }
+
+        .banner-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center; 
+            background-repeat: no-repeat;
+            filter: brightness(0.8);
+        }
+
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner-content h3 {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: white;
+            text-align: center;
+        }
+
+        .discount-label {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffcc00;
+            display: block;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .shop-now {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+            text-align: center;
+        }
+
+        .shop-now:hover {
+            background:rgb(158, 117, 1);
+            color: white;
+        }
+
+        .banner-container:has(.banner:nth-child(1)):not(:has(.banner:nth-child(2))) {
+            display: flex;
+            justify-content: center;
+        }
+
+        .banner-container:has(.banner:nth-child(2)):not(:has(.banner:nth-child(3))) {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .banner-container:has(.banner:nth-child(3)):not(:has(.banner:nth-child(4))) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .banner-container:has(.banner:nth-child(3)):not(:has(.banner:nth-child(4))) .banner:nth-child(3) {
+            grid-column: span 2;
+            justify-self: center;
+        }
+
+        .banner-container:has(.banner:nth-child(4)) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .banner-container {
+                grid-template-columns: 1fr;
+            }
+
+            .banner {
+                height: 150px;
+            }
+
+            .banner-content h3 {
+                font-size: 20px;
+            }
+
+            .discount-label {
+                font-size: 18px;
+            }
+
+            .shop-now {
+                font-size: 14px;
+            }
+        }
+    </style>
+
+</body>
+</html>

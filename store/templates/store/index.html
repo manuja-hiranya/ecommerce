@@ -2,12 +2,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Home</title>
 </head>
 <body>
     {% include 'store/navbar.html' %}
-    <h1>Welcome to the Home Page</h1>
+    <img src="{% static 'hero.jpg' %}" alt="Hero Image" style="width: 100%; height: auto;">
+
+    <div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-5 text-center justify-content-center">
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex flex-column align-items-center border mb-4" style="padding: 30px;">
+                <h1 class="fa fa-check m-0 mb-2" style="color: rgb(158, 117, 1);"></h1>
+                <h5 class="font-weight-semi-bold m-0">Natural Ingredients</h5>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex flex-column align-items-center border mb-4" style="padding: 30px;">
+                <h1 class="fa fa-shipping-fast m-0 mb-2" style="color: rgb(158, 117, 1);"></h1>
+                <h5 class="font-weight-semi-bold m-0">Islandwide Delivery</h5>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex flex-column align-items-center border mb-4" style="padding: 30px;">
+                <h1 class="fas fa-exchange-alt m-0 mb-2" style="color: rgb(158, 117, 1);"></h1>
+                <h5 class="font-weight-semi-bold m-0">Certified & Trusted</h5>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex flex-column align-items-center border mb-4" style="padding: 30px;">
+                <h1 class="fa fa-phone-volume m-0 mb-2" style="color: rgb(158, 117, 1);"></h1>
+                <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hero-section text-center py-5" style="background-color:rgb(158, 117, 1);">
+    <h1 class="display-4 font-weight-bold" style="color:white">Glow & Refresh</h1>
+    <p class="lead" style="color:white">Embrace Beauty and Wellness with Pure Ceylon Naturals!</p>
+</div>
+
+<div class="container-fluid pt-5">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5" style="margin: 30px;"><span class="px-2">Products Categories</span></h2>
+    </div>
+    <div class="row px-xl-5 pb-3">
+        <div class="col-lg-4 col-md-6 pb-1">
+            <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                <p class="text-right" id="beauty_products-stock">Loading...</p>
+                <a href="beauty_products.php" class="cat-img position-relative overflow-hidden mb-3">
+                    <img class="img-fluid" src="{% static 'natural-beauty-products.jpg' %}" alt="Beauty Products">
+                </a>
+                <center><h5 class="font-weight-semi-bold m-0">Mandodari Natural Beauty Products</h5></center>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+            <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                <p class="text-right" id="fashion-stock">Loading...</p>
+                <a href="spices.php" class="cat-img position-relative overflow-hidden mb-3">
+                    <img class="img-fluid" src="{% static 'natural-spices.jpg' %}" alt="Beauty Products">
+                </a>
+                <center><h5 class="font-weight-semi-bold m-0">Mandodari Natural Spices</h5></center>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+            <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                <p class="text-right" id="spices-stock">Loading...</p>
+                <a href="fashion.php" class="cat-img position-relative overflow-hidden mb-3">
+                    <img class="img-fluid" src="{% static 'fashion-products.jpg' %}" alt="Beauty Products">
+                </a>
+                <center><h5 class="font-weight-semi-bold m-0">Mandodari Fashion</h5></center>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'store/discounted_product.html' %}
+{% include 'store/bottom_banner.html' %}
+{% include 'store/featured_collections.html' %}
+{% include 'store/footer.html' %}
 </body>
 </html>
